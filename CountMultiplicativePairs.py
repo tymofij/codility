@@ -1,7 +1,7 @@
 def ap(n):
     """ arithmetic progression
     """
-    return (1+n)*n/2
+    return (1 + n) * n / 2
 
 
 def solution(A, B):
@@ -22,9 +22,7 @@ def solution(A, B):
         # the number can be calculated ariphmetically
         if two is None and elem >= 2:
             two = i
-
         A[i] = A[i]*M + B[i]
-
 
     if zero:
         res += ap(zero)
@@ -32,18 +30,15 @@ def solution(A, B):
             return min(res, 1000*1000*1000)
 
     if two:
-        res += ap(l - two -1)
-
-    end_of_questionable = two or l
+        res += ap(l - two - 1)
 
     if one is not None:
         j = l-1
         min_pair = None
-        for i in xrange(one, end_of_questionable):
+        for i in xrange(one, two or l):
             while j>i and A[i] * A[j]  >= (A[i] + A[j]) * M:
                 min_pair = j
                 j -= 1
-
             if min_pair:
                 res += (l - min_pair)
 
