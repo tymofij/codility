@@ -1,12 +1,14 @@
 def ap(n):
+    """ arithmetic progression
+    """
     return (1+n)*n/2
+
 
 def solution(A, B):
     M = 1000*1000
     l = len(A)
     if not A:
         return 0
-    # find starting element
     zero = one = two = None
     res = 0
     for (i, elem) in enumerate(A):
