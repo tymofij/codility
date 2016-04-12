@@ -35,22 +35,15 @@ def solution(A, B):
     end_of_questionable = two or l
 
     if one is not None:
-        j = None
+        j = l-1
+        min_pair = None
         for i in xrange(one, end_of_questionable):
-            if not j: # first pass, finding elem large enough for passing
-                for j in xrange(i+1,l):
-                    if A[i] * A[j]  >= (A[i] + A[j]) * M:
-                        res += (l - j)
-                        break
-            else: # may be some smaller would do for the next questionable?
-                while A[i] * A[j]  >= (A[i] + A[j]) * M:
-                    j -= 1
-                    if j < 0:
-                        break # nothing to do here, can not go lower
+            while j>i and A[i] * A[j]  >= (A[i] + A[j]) * M:
+                min_pair = j
+                j -= 1
 
-                # now we do not pass
-                j += 1
-                res += (l - j)
+            if min_pair:
+                res += (l - min_pair)
 
     return min(res, 1000*1000*1000)
 
