@@ -1,10 +1,14 @@
 def ap(n):
-    """ arithmetic progression
+    """ 
+    Arithmetic progression
     """
     return (1 + n) * n / 2
 
 
 def solution(A, B):
+    """
+    Count the number of pairs (x, y) such that x * y >= x + y. 
+    """
     M = 1000*1000
     l = len(A)
     if not A:
